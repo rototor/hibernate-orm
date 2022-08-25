@@ -1137,15 +1137,21 @@ public abstract class AbstractInformationExtractorImpl implements InformationExt
 							final Identifier indexIdentifier = DatabaseIdentifier.toIdentifier(
 									resultSet.getString( getResultSetIndexNameLabel() )
 							);
+
+							final Identifier columnIdentifier = DatabaseIdentifier.toIdentifier(
+									resultSet.getString( getResultSetColumnNameLabel() )
+							);
+							if ( columnIdentifier == null ) {
+								// Some Databases (e.g. MSSql) don't return columns for some index types.
+								continue;
+							}
+
 							IndexInformationImpl.Builder builder = builders.get( indexIdentifier );
 							if ( builder == null ) {
 								builder = IndexInformationImpl.builder( indexIdentifier );
 								builders.put( indexIdentifier, builder );
 							}
 
-							final Identifier columnIdentifier = DatabaseIdentifier.toIdentifier(
-									resultSet.getString( getResultSetColumnNameLabel() )
-							);
 							final ColumnInformation columnInformation = tableInformation.getColumn( columnIdentifier );
 							if ( columnInformation == null ) {
 								// See HHH-10191: this may happen when dealing with Oracle/PostgreSQL function indexes
