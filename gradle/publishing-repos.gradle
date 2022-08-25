@@ -20,6 +20,18 @@ publishing {
 			name 'jboss-snapshots-repository'
 			url 'https://repository.jboss.org/nexus/content/repositories/snapshots'
 		}
+		maven {
+			name 'jboss-snapshots-repository'
+			url 'https://repository.jboss.org/nexus/content/repositories/snapshots'
+		}
+		maven {
+			name 'ext-snapshots'
+			url 'http://10.50.11.11:30016/artifactory/ext-local'
+			credentials {
+        	    username = 'emmy'
+        	    password = 'fill-me-to-deploy'
+        	}
+		}
 	}
 }
 
