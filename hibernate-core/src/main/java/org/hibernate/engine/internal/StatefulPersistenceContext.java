@@ -710,7 +710,9 @@ public class StatefulPersistenceContext implements PersistenceContext {
 		final boolean alreadyNarrow = concreteProxyClass.isInstance( proxy );
 
 		if ( !alreadyNarrow ) {
-			if(false) LOG.narrowingProxy( concreteProxyClass );
+			if(false) {
+				LOG.narrowingProxy( concreteProxyClass );
+			}
 
 			// If an impl is passed, there is really no point in creating a proxy.
 			// It would just be extra processing.  Just return the impl
