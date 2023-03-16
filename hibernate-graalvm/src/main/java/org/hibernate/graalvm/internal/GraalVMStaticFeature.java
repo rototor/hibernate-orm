@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import org.hibernate.internal.util.ReflectHelper;
 
-import com.oracle.svm.core.annotate.AutomaticFeature;
 import org.graalvm.nativeimage.hosted.Feature;
 import org.graalvm.nativeimage.hosted.RuntimeReflection;
 
@@ -34,26 +33,29 @@ import org.graalvm.nativeimage.hosted.RuntimeReflection;
  * </p>
  * @author Sanne Grinovero
  */
-@AutomaticFeature
-public class GraalVMStaticAutofeature implements Feature {
+public class GraalVMStaticFeature implements Feature {
 
 	public void beforeAnalysis(Feature.BeforeAnalysisAccess before) {
 		final Class<?>[] needsHavingSimpleConstructors = StaticClassLists.typesNeedingDefaultConstructorAccessible();
-		final Class[] neddingAllConstructorsAccessible = StaticClassLists.typesNeedingAllConstructorsAccessible();
+		final Class<?>[] needingAllConstructorsAccessible = StaticClassLists.typesNeedingAllConstructorsAccessible();
 		//Size formula is just a reasonable guess:
-		ArrayList<Executable> executables = new ArrayList<>( needsHavingSimpleConstructors.length + neddingAllConstructorsAccessible.length * 3 );
-		for ( Class c : needsHavingSimpleConstructors ) {
+		ArrayList<Executable> executables = new ArrayList<>( needsHavingSimpleConstructors.length + needingAllConstructorsAccessible.length * 3 );
+		for ( Class<?> c : needsHavingSimpleConstructors ) {
 			executables.add( ReflectHelper.getDefaultConstructor( c ) );
 		}
-		for ( Class c : neddingAllConstructorsAccessible ) {
-			for ( Constructor declaredConstructor : c.getDeclaredConstructors() ) {
+		for ( Class<?> c : needingAllConstructorsAccessible) {
+			for ( Constructor<?> declaredConstructor : c.getDeclaredConstructors() ) {
 				executables.add( declaredConstructor );
 			}
 		}
 		RuntimeReflection.register( needsHavingSimpleConstructors );
-		RuntimeReflection.register( neddingAllConstructorsAccessible );
+		RuntimeReflection.register( needingAllConstructorsAccessible );
 		RuntimeReflection.register( StaticClassLists.typesNeedingArrayCopy() );
 		RuntimeReflection.register( executables.toArray(new Executable[0]) );
 	}
 
+	//@Override Method overridden in later API versions of GraalVM
+	public String getDescription() {
+		return "Hibernate ORM's static reflection registrations for GraalVM";
+	}
 }

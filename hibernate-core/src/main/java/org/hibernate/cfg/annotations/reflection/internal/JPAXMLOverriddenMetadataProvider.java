@@ -36,7 +36,7 @@ import org.hibernate.boot.spi.ClassLoaderAccess;
  * @author Emmanuel Bernard
  */
 @SuppressWarnings("unchecked")
-public final class JPAXMLOverriddenMetadataProvider implements MetadataProvider {
+public class JPAXMLOverriddenMetadataProvider implements MetadataProvider {
 
 	private static final MetadataProvider STATELESS_BASE_DELEGATE = new JavaMetadataProvider();
 

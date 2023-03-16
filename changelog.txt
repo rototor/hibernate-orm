@@ -3,6 +3,103 @@ Hibernate 5 Changelog
 
 Note: Please refer to JIRA to learn more about each issue.
 
+Changes in 5.6.15.Final (February 06, 2023)
+------------------------------------------------------------------------------------------------------------------------
+
+https://hibernate.atlassian.net/projects/HHH/versions/32121
+
+** Bug
+    * [HHH-16049] - Setting a property to its current value with bytecode enhancement enabled results in unnecessary SQL Update in some (many) cases
+    * [HHH-15665] - Mariadb is missing identifier quote on SEQUENCE QUERY
+    * [HHH-15618] - Procedure should accept TypedParameterValue as parameter
+
+** Improvement
+    * [HHH-15693] - Introduce a fast-path access for ClassLoaderService being retrieved from ServiceRegistry
+    * [HHH-15690] - HQLQueryPlan to have a direct reference to QueryTranslatorFactory
+    * [HHH-15685] - Improve efficiency of Dialect lookup in Loader and HqlSqlWalker
+
+** Patch
+    * [HHH-15792] - Explicitly add JavaDoc to make @deprecated hint for createSQLQuery visible in Eclipse
+
+
+Changes in 5.6.14.Final (November 04, 2022)
+------------------------------------------------------------------------------------------------------------------------
+
+https://hibernate.atlassian.net/projects/HHH/versions/32120
+
+** Improvement
+    * [HHH-15662] - ClasscastException caused by check for Managed rather than ManagedEntity
+
+
+Changes in 5.6.13.Final (November 03, 2022)
+------------------------------------------------------------------------------------------------------------------------
+
+https://hibernate.atlassian.net/projects/HHH/versions/32112
+
+** Bug
+    * [HHH-15634] - Lazy basic property does not get updated on change
+    * [HHH-15561] - Function "IDENTITY" not found when inserting audited revision using Hibernate Envers
+    * [HHH-15554] - Merge of an Entity with an immutable composite user type throws Exception 
+
+** Improvement
+    * [HHH-15649] - Additional performance fixes relating to Klass's _secondary_super_cache interaction with entity enhancement
+    * [HHH-15639] - Upgrade to ByteBuddy 1.12.18
+    * [HHH-15637] - Upgrade to Byteman 4.0.20
+    * [HHH-15616] - Mitigate performance impact of entity enhancement on Klass's _secondary_super_cache
+    * [HHH-15585] - Add support for DB2 aliases for schema validation
+    * [HHH-15575] - Make getter org.hibernate.criterion.SimpleExpression#getOp() public
+
+** Task
+    * [HHH-15594] - Remove Oracle RDS and all test matrix uses
+
+
+Changes in 5.6.12.Final (September 27, 2022)
+------------------------------------------------------------------------------------------------------------------------
+
+https://hibernate.atlassian.net/projects/HHH/versions/32105
+
+** Bug
+    * [HHH-15523] - Missing use of SqlStringGenerationContext in MapBinder#getFromAndWhereFormula
+    * [HHH-15522] - Hibernate.isInitialized method not working for Envers Collections
+    * [HHH-15520] - ValueGeneration on @OneToOne leads to boot error 
+    * [HHH-15505] - Getter of loaded entity returns null when using bytecode enhancement on entity whose field is defined both in mapped superclass and concrete entity
+    * [HHH-15235] - PropertyAccessException on OneToOne mapping after migration to Hibernate 5.6
+    * [HHH-15216] - Cannot change MetadataProvider implementation because JPAXMLOverriddenMetadataProvider is final and precisely expected by a cast operator
+    * [HHH-15045] - onFlushDirty() invoked on parent entity in a @OneToOne relationship when no table columns are changed
+    * [HHH-14943] - byNaturalId API creates unparseable query (AND keyword instead of WHERE)
+
+** Deprecation
+    * [HHH-15536] - Deprecate SharedSessionContractImplementor#getTransactionStartTimestamp() and CacheTransactionSynchronization#getCurrentTransactionStartTimestamp()
+
+** New Feature
+    * [HHH-15508] - Backport Session#getReference(Object) to branch 5.6
+
+** Task
+    * [HHH-15555] - Remove use of @AutomaticFeature in GraalVM module
+    * [HHH-15538] - Move Jenkinsfile timeout around shell command
+
+
+Changes in 5.6.11.Final (August 30, 2022)
+------------------------------------------------------------------------------------------------------------------------
+
+https://hibernate.atlassian.net/projects/HHH/versions/32089
+
+** Bug
+    * [HHH-15468] - contributor-build.yml has no explicit permissions set
+    * [HHH-15454] - Primitive type requested from tuple throws exception
+    * [HHH-15440] - @OneToOne and @OptimisticLock(excluded = true) not working correctly
+    * [HHH-15425] - org.hibernate.QueryException: could not resolve property is thrown when Hibernate criteria tries to select the id of an association annotated with @NotFound
+    * [HHH-15359] - The entity returned by a merge doesn't contain @ManyToMany relation when the collection resides in @Embeddable
+    * [HHH-15100] - Limitation of metamodel imports cache causes severe performance drops in large projects
+
+** Improvement
+    * [HHH-15466] - Compatibility with Jandex 3.0.0
+
+** Task
+    * [HHH-15451] - Upgrade PostgreSQL JDBC driver to 42.5.0
+    * [HHH-15388] - Upgrade to Micrometer 1.9.3
+
+
 Changes in 5.6.10.Final (July 07, 2022)
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -479,7 +576,7 @@ https://hibernate.atlassian.net/projects/HHH/versions/31844
     * [HHH-14257] - An Entity A with a map collection having as index an Embeddable with a an association to the Entity A fails with a NPE
     * [HHH-14251] - Invalid SQL for @Embedded UPDATE
     * [HHH-14249] - MultiLineImport fails when script contains blank spaces or tabs at the end of the last sql statement
-
+    * [HHH-14216] - Second-level cache doesn't support @OneToOne
 
 Changes in 5.4.14.Final (April 6, 2020)
 ------------------------------------------------------------------------------------------------------------------------

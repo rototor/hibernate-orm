@@ -179,7 +179,6 @@ import org.hibernate.boot.jaxb.mapping.spi.JaxbSqlResultSetMapping;
 import org.hibernate.boot.jaxb.mapping.spi.JaxbStoredProcedureParameter;
 import org.hibernate.boot.jaxb.mapping.spi.JaxbTable;
 import org.hibernate.boot.jaxb.mapping.spi.JaxbTableGenerator;
-import org.hibernate.boot.jaxb.mapping.spi.JaxbTransient;
 import org.hibernate.boot.jaxb.mapping.spi.JaxbUniqueConstraint;
 import org.hibernate.boot.jaxb.mapping.spi.JaxbVersion;
 import org.hibernate.boot.jaxb.mapping.spi.LifecycleCallbackContainer;
