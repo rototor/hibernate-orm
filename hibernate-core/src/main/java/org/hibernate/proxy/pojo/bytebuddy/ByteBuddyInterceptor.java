@@ -65,7 +65,9 @@ public class ByteBuddyInterceptor extends BasicLazyInitializer implements ProxyC
 						return proxy;
 					}
 					else {
-						LOG.narrowingProxy( returnValue.getClass() );
+						if(false) { 
+							LOG.narrowingProxy( returnValue.getClass() ); 
+						}
 					}
 				}
 				return returnValue;
