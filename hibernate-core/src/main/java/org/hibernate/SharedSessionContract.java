@@ -125,7 +125,6 @@ public interface SharedSessionContract extends QueryProducer, Serializable {
 	 *
 	 * @deprecated (since 5.2) for Session, use the JPA Criteria
 	 */
-	@Deprecated
 	Criteria createCriteria(Class persistentClass);
 
 	/**
@@ -139,7 +138,6 @@ public interface SharedSessionContract extends QueryProducer, Serializable {
 	 *
 	 * @deprecated (since 5.2) for Session, use the JPA Criteria
 	 */
-	@Deprecated
 	Criteria createCriteria(Class persistentClass, String alias);
 
 	/**
