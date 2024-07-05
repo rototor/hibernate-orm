@@ -26,7 +26,7 @@ publishing {
 		}
 		maven {
 			name 'ext-snapshots'
-			url 'http://10.50.11.11:30016/artifactory/ext-local'
+			url 'http://10.50.11.10:30016/artifactory/ext-local'
 			credentials {
         	    username = 'emmy'
         	    password = 'fill-me-to-deploy'
