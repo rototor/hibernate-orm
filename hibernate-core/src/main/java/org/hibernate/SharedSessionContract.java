@@ -122,8 +122,6 @@ public interface SharedSessionContract extends QueryProducer, Serializable {
 	 * @param persistentClass The class, which is an entity, or has entity subclasses/implementors
 	 *
 	 * @return The criteria instance for manipulation and execution
-	 *
-	 * @deprecated (since 5.2) for Session, use the JPA Criteria
 	 */
 	Criteria createCriteria(Class persistentClass);
 
@@ -135,8 +133,6 @@ public interface SharedSessionContract extends QueryProducer, Serializable {
 	 * @param alias The alias to use
 	 *
 	 * @return The criteria instance for manipulation and execution
-	 *
-	 * @deprecated (since 5.2) for Session, use the JPA Criteria
 	 */
 	Criteria createCriteria(Class persistentClass, String alias);
 
